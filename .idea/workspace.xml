@@ -12,12 +12,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="65ed10ea-93c8-4c76-b3cd-4829d266dbda" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MatrixCalculator.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MatrixCalculator.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/MatrixComputation.dir/MatrixCalculator.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/MatrixComputation.dir/MatrixCalculator.cpp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/MatrixComputation.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/MatrixComputation.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/MatrixComputation.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/MatrixComputation.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/MatrixComputation.dir/main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/MatrixComputation.dir/main.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expression.in" beforeDir="false" afterPath="$PROJECT_DIR$/expression.in" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matrix.in" beforeDir="false" afterPath="$PROJECT_DIR$/matrix.in" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/result.out" beforeDir="false" afterPath="$PROJECT_DIR$/result.out" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,8 +48,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/MatrixCalculator.cpp">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="374">
-                  <caret line="92" column="36" selection-start-line="92" selection-start-column="36" selection-end-line="92" selection-end-column="36" />
+                <state relative-caret-position="617">
+                  <caret line="149" lean-forward="true" selection-start-line="149" selection-end-line="149" />
                   <folding>
                     <element signature="e#0#18#0" expanded="true" />
                   </folding>
@@ -79,26 +78,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/result.out">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="34">
-                  <caret line="2" column="55" lean-forward="true" selection-start-line="2" selection-start-column="55" selection-end-line="2" selection-end-column="55" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/matrix.in">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="170">
-                  <caret line="10" column="52" selection-start-line="10" selection-start-column="52" selection-end-line="10" selection-end-column="52" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/expression.in">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="51">
-                  <caret line="3" column="5" lean-forward="true" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+                <state relative-caret-position="102">
+                  <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
                 </state>
               </provider>
             </entry>
@@ -163,12 +144,12 @@
         <option value="$PROJECT_DIR$/Core/Bignum.h" />
         <option value="$PROJECT_DIR$/Core/Bignum.cpp" />
         <option value="$PROJECT_DIR$/result.out" />
-        <option value="$PROJECT_DIR$/matrix.in" />
         <option value="$PROJECT_DIR$/Core/Matrix.cpp" />
         <option value="$PROJECT_DIR$/MatrixCalculator.h" />
         <option value="$PROJECT_DIR$/Core/Matrix.h" />
         <option value="$PROJECT_DIR$/main.cpp" />
         <option value="$PROJECT_DIR$/expression.in" />
+        <option value="$PROJECT_DIR$/matrix.in" />
         <option value="$PROJECT_DIR$/MatrixCalculator.cpp" />
       </list>
     </option>
@@ -211,11 +192,11 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.gutterIcons" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Code\CLionProjects\MatrixComputation\Core" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Code\CLionProjects\MatrixComputation" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Code\CLionProjects\MatrixComputation\Core" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -250,12 +231,12 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6943292" visible="true" weight="0.12260128" />
-      <window_info id="Structure" order="1" sideWeight="0.30567083" side_tool="true" visible="true" weight="0.12260128" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6944745" visible="true" weight="0.12260128" />
+      <window_info id="Structure" order="1" sideWeight="0.30552545" side_tool="true" visible="true" weight="0.12260128" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.21668473" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.21668473" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -274,7 +255,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="fixed one bug" />
     <MESSAGE value="added some comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="added some comments" />
+    <MESSAGE value="emmm" />
+    <option name="LAST_COMMIT_MESSAGE" value="emmm" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
@@ -328,13 +310,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/matrix.in">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="52" selection-start-line="10" selection-start-column="52" selection-end-line="10" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Core/Matrix.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="685">
@@ -342,24 +317,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/result.out">
+    <entry file="file://$PROJECT_DIR$/matrix.in">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
-          <caret line="2" column="55" lean-forward="true" selection-start-line="2" selection-start-column="55" selection-end-line="2" selection-end-column="55" />
+          <caret line="2" column="5" lean-forward="true" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/expression.in">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="5" lean-forward="true" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+        <state relative-caret-position="17">
+          <caret line="1" column="2" lean-forward="true" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/result.out">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MatrixCalculator.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="92" column="36" selection-start-line="92" selection-start-column="36" selection-end-line="92" selection-end-column="36" />
+        <state relative-caret-position="617">
+          <caret line="149" lean-forward="true" selection-start-line="149" selection-end-line="149" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
