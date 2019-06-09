@@ -4,11 +4,12 @@
 #include "MatrixCalculator.h"
 
 void MatrixCalculator::calculate(string matrix_path, string expression_path, string result_path) {
-    readMatrices(matrix_path);
+
     readExpressions(expression_path);
 
     ofstream fo(result_path);
     for (string &expression : expressions) {
+        readMatrices(matrix_path);
         Matrix result = computeOneExpression(expression);
         fo << result.toString();
     }
@@ -63,7 +64,7 @@ Matrix MatrixCalculator::computeOneExpression(string expression) {
     int len = expression.length();
     int i = 0;
     while (i < len) {
-        string str = "";
+        string str;
         if (expression.at(i) == '+' || expression.at(i) == '-' ||
             expression.at(i) == '*' || expression.at(i) == '~') {
             str += expression.at(i);
@@ -141,7 +142,7 @@ Matrix MatrixCalculator::computeOneExpression(string expression) {
             s2.pop();
             string str;
 
-            str += str2; // 被ide推荐这么写。。
+            str += str2;
             str += "+";
             str += str1;
 
@@ -171,7 +172,7 @@ Matrix MatrixCalculator::computeOneExpression(string expression) {
             str += "*";
             str += str1;
 
-            if (isAllNumber(str1)) { // 记一次偷懒引发的惨案
+            if (isAllNumber(str1)) {
                 int a = atoi(str1.c_str());
                 matrixMappings[str] = a * matrixMappings[str2];
             } else if (isAllNumber(str2)) {
@@ -213,15 +214,14 @@ bool MatrixCalculator::isNumber(char i) {
 }
 
 bool MatrixCalculator::isAllNumber(string s) {
-    int slen = s.length();
     int i = 0;
-    if (s.at(i) == '-')
+    if (s.at(0) == '-')
         i++;
-    else if (!isNumber(s.at(i)))
+    else if (!isNumber(s.at(0)))
         return false;
 
-    for (; i < slen; i++) {
-        if (!isNumber(s.at(i)) || (i == 0 && s.at(i) == '-'))
+    for (; i < s.length(); i++) {
+        if (!isNumber(s.at(i)))
             return false;
     }
     return true;
