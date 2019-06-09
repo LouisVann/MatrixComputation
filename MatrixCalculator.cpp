@@ -59,17 +59,30 @@ void MatrixCalculator::readExpressions(const string &expression_path) {
 }
 
 Matrix MatrixCalculator::computeOneExpression(string expression) {
-    // postfix
+    // begin postfix conversion
+    // https://baike.baidu.com/item/逆波兰式/128437?fr=aladdin
     stack<string> s1, s2;
     int len = expression.length();
-    int i = 0;
+    int i = 0; // recording the position
     while (i < len) {
         string str;
-        if (expression.at(i) == '+' || expression.at(i) == '-' ||
-            expression.at(i) == '*' || expression.at(i) == '~') {
+        if (isCharacter(expression.at(i))) { // matrix operand
+            while (i < len && isCharacter(expression.at(i))) {
+                str += expression.at(i);
+                i++;
+            }
+            s2.push(str);
+        } else if (isNumber(expression.at(i))) { // constant operand
+            while (i < len && isNumber(expression.at(i))) {
+                str += expression.at(i);
+                i++;
+            }
+            s2.push(str);
+        } else if (expression.at(i) == '+' || expression.at(i) == '-' ||
+                   expression.at(i) == '*' || expression.at(i) == '~') { // operator
             str += expression.at(i);
 
-            if (expression.at(0) && (i == 0 || !isCharacter(expression.at(i - 1))) &&
+            if ((i == 0 || !isCharacter(expression.at(i - 1))) &&
                 (i + 1 < len && isNumber(expression.at(i + 1)))) {
                 i++;
                 while (i < len && isNumber(expression.at(i))) {
@@ -90,31 +103,20 @@ Matrix MatrixCalculator::computeOneExpression(string expression) {
                 s1.push(str);
                 i++;
             }
-        } else if (isCharacter(expression.at(i))) {
-            while (i < len && isCharacter(expression.at(i))) {
-                str += expression.at(i);
-                i++;
-            }
-            s2.push(str);
-        } else if (isNumber(expression.at(i))) {
-            while (i < len && isNumber(expression.at(i))) {
-                str += expression.at(i);
-                i++;
-            }
-            s2.push(str);
         }
+
     }
-    ////////////////////////////////////////////////////////////////////////////////
     while (!s1.empty()) {
         s2.push(s1.top());
         s1.pop();
     }
-    while (!s2.empty()) { // 再把s2的内容依次放入s1，因为此时s2是逆波兰式的倒序。
+    while (!s2.empty()) { // s2 was in inverse order
         s1.push(s2.top());
         s2.pop();
     }
+    // finish postfix conversion
 
-    // 利用s1来运算
+    // calculate based on stack s1
     while (!s1.empty()) {
         if (s1.top() == "+=") {
             string str1 = s2.top();
@@ -213,15 +215,15 @@ bool MatrixCalculator::isNumber(char i) {
     return i >= 48 && i <= 59;
 }
 
-bool MatrixCalculator::isAllNumber(string s) {
+bool MatrixCalculator::isAllNumber(string val) {
     int i = 0;
-    if (s.at(0) == '-')
+    if (val.at(0) == '-')
         i++;
-    else if (!isNumber(s.at(0)))
+    else if (!isNumber(val.at(0)))
         return false;
 
-    for (; i < s.length(); i++) {
-        if (!isNumber(s.at(i)))
+    for (; i < val.length(); i++) {
+        if (!isNumber(val.at(i)))
             return false;
     }
     return true;
