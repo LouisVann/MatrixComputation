@@ -65,52 +65,59 @@ Matrix MatrixCalculator::computeOneExpression(string expression) {
     int len = expression.length();
     int i = 0; // recording the position
     while (i < len) {
-        string str;
+        string thisStr;
         if (isCharacter(expression.at(i))) { // matrix operand
             while (i < len && isCharacter(expression.at(i))) {
-                str += expression.at(i);
+                thisStr += expression.at(i);
                 i++;
             }
-            s2.push(str);
+            s2.push(thisStr);
         } else if (isNumber(expression.at(i))) { // constant operand
             while (i < len && isNumber(expression.at(i))) {
-                str += expression.at(i);
+                thisStr += expression.at(i);
                 i++;
             }
-            s2.push(str);
+            s2.push(thisStr);
         } else if (expression.at(i) == '+' || expression.at(i) == '-' ||
                    expression.at(i) == '*' || expression.at(i) == '~') { // operator
-            str += expression.at(i);
+            thisStr += expression.at(i);
 
-            if ((i == 0 || !isCharacter(expression.at(i - 1))) &&
-                (i + 1 < len && isNumber(expression.at(i + 1)))) {
+            if (expression.at(i) == '-' && (i == 0 || (!isCharacter(expression.at(i - 1)) && !isNumber(expression.at(i - 1)))) &&
+                (i + 1 < len && (isCharacter(expression.at(i + 1)) || isNumber(expression.at(i + 1))))) { // negative sign instead of minus
                 i++;
-                while (i < len && isNumber(expression.at(i))) {
-                    str += expression.at(i);
-                    i++;
+                if (isCharacter(expression.at(i))) {
+                    while (i < len && isCharacter(expression.at(i))) {
+                        thisStr += expression.at(i);
+                        i++;
+                    }
+                } else { // isNumber
+                    while (i < len && isNumber(expression.at(i))) {
+                        thisStr += expression.at(i);
+                        i++;
+                    }
                 }
-                s2.push(str);
+                s2.push(thisStr);
             } else {
-                if (i + 1 < len && (str == "+" || str == "-") && expression.at(i + 1) == '=') {
-                    str += expression.at(i + 1);
+                if (i + 1 < len && (thisStr == "+" || thisStr == "-") && expression.at(i + 1) == '=') {
+                    thisStr += expression.at(i + 1);
                     i++;
                 }
 
-                while (!s1.empty() && getPriority(str) <= getPriority(s1.top())) {
+                while (!s1.empty() && getPriority(thisStr) <= getPriority(s1.top())) {
                     s2.push(s1.top());
                     s1.pop();
                 }
-                s1.push(str);
+                s1.push(thisStr);
                 i++;
             }
         }
 
     }
-    while (!s1.empty()) {
+    while (!s1.empty()) { // pop s1 elements into s2
         s2.push(s1.top());
         s1.pop();
     }
-    while (!s2.empty()) { // s2 was in inverse order
+    while (!s2.empty()) { // s2 is in inverse order, so pop s2 into s1
         s1.push(s2.top());
         s2.pop();
     }
@@ -212,7 +219,7 @@ bool MatrixCalculator::isCharacter(char i) {
 }
 
 bool MatrixCalculator::isNumber(char i) {
-    return i >= 48 && i <= 59;
+    return i >= 48 && i <= 57;
 }
 
 bool MatrixCalculator::isAllNumber(string val) {
