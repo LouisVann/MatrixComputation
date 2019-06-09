@@ -82,20 +82,23 @@ Matrix MatrixCalculator::computeOneExpression(string expression) {
                    expression.at(i) == '*' || expression.at(i) == '~') { // operator
             thisStr += expression.at(i);
 
-            if (expression.at(i) == '-' && (i == 0 || (!isCharacter(expression.at(i - 1)) && !isNumber(expression.at(i - 1)))) &&
-                (i + 1 < len && (isCharacter(expression.at(i + 1)) || isNumber(expression.at(i + 1))))) { // negative sign instead of minus
+            if (expression.at(i) == '-' && (i == 0 || !isCharacter(expression.at(i - 1))) &&
+                (i + 1 < len && isNumber(expression.at(i + 1)))) { // negative sign instead of minus : negative constant
                 i++;
-                if (isCharacter(expression.at(i))) {
-                    while (i < len && isCharacter(expression.at(i))) {
-                        thisStr += expression.at(i);
-                        i++;
-                    }
-                } else { // isNumber
-                    while (i < len && isNumber(expression.at(i))) {
-                        thisStr += expression.at(i);
-                        i++;
-                    }
+                while (i < len && isNumber(expression.at(i))) {
+                    thisStr += expression.at(i);
+                    i++;
                 }
+                s2.push(thisStr);
+            } else if (expression.at(i) == '-' && (i == 0 || !isCharacter(expression.at(i - 1))) &&
+                (i + 1 < len && isCharacter(expression.at(i + 1)))) { // negative sign instead of minus : negative matrix
+                i++;
+                while (i < len && isCharacter(expression.at(i))) {
+                    thisStr += expression.at(i);
+                    i++;
+                }
+
+                matrixMappings[thisStr] = matrixMappings[thisStr.substr(1)] * -1;
                 s2.push(thisStr);
             } else {
                 if (i + 1 < len && (thisStr == "+" || thisStr == "-") && expression.at(i + 1) == '=') {
@@ -125,26 +128,7 @@ Matrix MatrixCalculator::computeOneExpression(string expression) {
 
     // calculate based on stack s1
     while (!s1.empty()) {
-        if (s1.top() == "+=") {
-            string str1 = s2.top();
-            s2.pop();
-            string str2 = s2.top();
-            s2.pop();
-            matrixMappings[str2] += matrixMappings[str1];
-            s2.push(str2);
-        } else if (s1.top() == "-=") {
-            string str1 = s2.top();
-            s2.pop();
-            string str2 = s2.top();
-            s2.pop();
-            matrixMappings[str2] -= matrixMappings[str1];
-            s2.push(str2);
-        } else if (s1.top() == "~") {
-            string str = "~" + s2.top();
-            matrixMappings[str] = ~matrixMappings[s2.top()];
-            s2.pop();
-            s2.push(str);
-        } else if (s1.top() == "+") {
+        if (s1.top() == "+") {
             string str1 = s2.top();
             s2.pop();
             string str2 = s2.top();
@@ -170,6 +154,20 @@ Matrix MatrixCalculator::computeOneExpression(string expression) {
 
             matrixMappings[str] = matrixMappings[str2] - matrixMappings[str1];
             s2.push(str);
+        } else if (s1.top() == "+=") {
+            string str1 = s2.top();
+            s2.pop();
+            string str2 = s2.top();
+            s2.pop();
+            matrixMappings[str2] += matrixMappings[str1];
+            s2.push(str2);
+        } else if (s1.top() == "-=") {
+            string str1 = s2.top();
+            s2.pop();
+            string str2 = s2.top();
+            s2.pop();
+            matrixMappings[str2] -= matrixMappings[str1];
+            s2.push(str2);
         } else if (s1.top() == "*") {
             string str1 = s2.top();
             s2.pop();
@@ -190,6 +188,11 @@ Matrix MatrixCalculator::computeOneExpression(string expression) {
             } else
                 matrixMappings[str] = matrixMappings[str2] * matrixMappings[str1];
 
+            s2.push(str);
+        } else if (s1.top() == "~") {
+            string str = "~" + s2.top();
+            matrixMappings[str] = ~matrixMappings[s2.top()];
+            s2.pop();
             s2.push(str);
         } else {
             s2.push(s1.top());
